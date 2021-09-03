@@ -1,0 +1,25 @@
+/* .output {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.previuos-operand {
+  word-wrap: break-word;
+} */
+
+.calculator-grid > button {
+    font-size: xx-large;
+    cursor: pointer;
+  
+  }
+  .calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .5);
+    transition: .3s;
+  }
+  
+  .output {
+    min-height: 4rem;
+  }
+  
+  
+  

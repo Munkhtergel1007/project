@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-0 m-0 h-screen">
+
+    <div class="w-2/5 mx-auto calculator-grid h-4/5 grid grid-cols-4 gap-1 my-16 font-mono font-black ">
+
+
+      <div class="output flex justify-between flex-col items-end col-span-4 bg-black bg-opacity-75 p-4 break-words break-all ">
+        <div class="text-white text-opacity-75 text-2xl" id="previous"></div>
+        <div class="text-white text-4xl" id="current"></div>
+      </div>  
+
+      <!-- <div class="grid grid-cols-4 h-4/5 gap-1"> -->
+        <button class="col-span-2 border border-white" id="clear">AC</button>
+        <button class="border" id="delete">C</button>
+        <button class="border" id="special">/</button>
+        <button class="border" id="number">1</button>
+        <button class="border" id="number">2</button>
+        <button class="border" id="number">3</button>
+        <button class="border" id="special">*</button>
+        <button class="border" id="number">4</button>
+        <button class="border" id="number">5</button>
+        <button class="border" id="number">6</button>
+        <button class="border" id="special">+</button>
+        <button class="border" id="number">7</button>
+        <button class="border" id="number">8</button>
+        <button class="border" id="number">9</button>
+        <button class="border" id="special">-</button>
+        <button class="border" id="number">.</button>  
+        <button class="border" id="number">0</button>
+        <button class="col-span-2 border" id="equal">=</button>
+
+      <!-- </div> -->
+
+      
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
