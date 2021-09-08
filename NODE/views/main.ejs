@@ -1,0 +1,30 @@
+<%- include('include/head.ejs') %>
+    <main class="w-full flex justify-center items-center mb-4 mt-3">
+        <a href="/register">
+            <h1>Register</h1>
+        </a>
+        
+    </main>
+
+
+
+
+    <% if(users.length === 0){ %>
+        <h1>Хэрэглэг байхгүй байна..</h1>
+    <% } else { %>
+        <% for(user of users){ %>
+            <div class="border border-black justify-between flex w-96 m-auto bg-gray-200 mb-2">
+                <h1 class="text-gray-700 flex items-center m-auto">
+                   <a href="/user/<%= user.id %>">
+                        <%= user.name %>
+                   </a>
+                </h1>
+                   
+                   <form action="/delete" method="post">
+                    <input type="hidden" name="userId" value="<%= user.id %>">
+                    <input class="p-4 bg-red-400" type="submit" value="X">
+                </form>
+            </div>
+                <% } %>
+    <% } %>
+<%- include('include/foot.ejs') %>
