@@ -1,0 +1,59 @@
+<%- include('include/head.ejs') %>
+
+<main class="w-full flex flex-col items-center">
+    <button class="w-2/5 my-4 border rounded-xl py-2 hover:bg-red-100  duration-300" id="btn">Хувийн мэдээлэл дэлгэрэнгүй харах</button>
+    <div class="grid grid-cols-2 gap-2 w-4/5 items-center m-auto mb-4 mt-4 hidden " id="container" >
+        <div class="border p-2 bg-gray-200 rounded-md">name:</div>
+        <div class="border p-2 bg-gray-200 rounded-md"><%= user.name %></div>
+        <div class="border p-2 bg-gray-200 rounded-md">email:</div>
+        <div class="border p-2 bg-gray-200 rounded-md"><%= user.email %></div>
+        <div class="border p-2 bg-gray-200 rounded-md">number :</div>
+        <div class="border p-2 bg-gray-200 rounded-md"><%= user.number %></div>
+        <div class="border p-2 bg-gray-200 rounded-md">avatar :</div>
+        <div class="border p-2 bg-gray-200 rounded-md"><%= user.avatar %></div>
+        <div class="border p-2 bg-gray-200 rounded-md">password :</div>
+        <div class="border p-2 bg-gray-200 rounded-md"><%= user.password %></div>
+    </div>
+
+    
+    <a href="/edit/<%= user._id %>" class="border w-2/5 p-4 rounded-2xl bg-red-400 border-gray-200 flex justify-center border hover:bg-white hover:text-black duration-300 curson-pointer">
+        <h1 class="">Мэдээлэл өөрчлөх</h1>
+    </a>
+    
+    <form action="/getPost" method="POST" class="w-4/5 flex flex-col mt-8" >
+        <label for="title" class="p-2 font-bold">
+            Гарчиг
+        </label>
+        <input type="text" id="title" name="title" placeholder="Гарчигаа оруулна уу" class="mb-2 p-2 border-gray-400 border rounded-md">
+
+        <label for="text" class="p-2 font-bold">
+               Тэкст
+        </label>
+        <input type="text" id="text" name="text" placeholder="Тэкстээ оруулна уу" class="p-2  border-gray-400 border rounded-md mb-1">
+        <input type="hidden" name="userId" value="<%= user._id %>">
+        <input type="submit" class="bg-red-400 rounded-md p-2" value="submit">
+
+    </form>
+    
+    <a href="/timeline"> 
+        Пост унших
+    </a>
+
+</main>
+
+
+<script>
+    const btn = document.querySelector('#btn');
+    const container = document.querySelector('#container');
+    
+    btn.addEventListener('click', e => {
+        if(container.classList.contains('hidden')) {
+            container.classList.remove('hidden')
+        } else{
+            container.classList.add('hidden')
+        }
+    })
+</script> 
+
+</body>
+</html>
