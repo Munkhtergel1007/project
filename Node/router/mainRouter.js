@@ -22,6 +22,5 @@ router.post('/getPost', mainController.getPostController)
 
 router.get('/timeline', mainController.getTimelineController)
 
-router.get('/admin', mainController.getAdminController)
 
 module.exports = router;

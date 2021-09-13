@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs')
 
 const Student = require('../model/member');
 const Article = require('../model/article');
-const article = require('../model/article');
 
 const data = fs.readFileSync(`${__dirname}/../data/users.json`, 'utf-8');
 
@@ -30,15 +29,19 @@ exports.loginContoller = (req, res) => {
 }
 
 exports.userController = (req, res) => {
-    const userId = req.params.id;
-    console.log(req.cookies)
-    Student.findOne({_id: userId})
-    .then(student => {
-        res.render('account', {
-            pageTitle: 'loggedUser.name',
-            user: student
+    if(req.session.isLoggedIn) {
+        const userId = req.params.id;
+        Student.findOne({_id: userId})
+        .then(student => {
+            res.render('account', {
+                pageTitle: 'loggedUser.name',
+                user: student
+            })
         })
-    })
+
+    } else {
+        res.redirect('/login')
+    }
 }
 
 exports.getRegisterController = (req, res) => {
@@ -163,9 +166,6 @@ exports.getTimelineController = (req, res) => {
     
 }
 
-exports.getAdminController = (req, res) => {
-
-}
 
 
 

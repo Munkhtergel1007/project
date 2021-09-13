@@ -10,8 +10,9 @@ const arcticaSchema = new Schema({
         type: String,
         required: true
     },
-    id: {
-        type: String,
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'student',
         required: true
     }
 });

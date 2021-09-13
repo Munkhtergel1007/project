@@ -10,9 +10,14 @@ const data = fs.readFileSync(`${__dirname}/../data/users.json`, 'utf-8');
 const objectData = JSON.parse(data)
 
 exports.getLoginController = (req, res) => {
-    res.render('login', {
-        pageTitle: "Нэвтрэх хуудас"
-    })
+    if(req.cookies.loggedIn === 'true') {
+        
+        res.redirect(`/user/${req.user._id}`)
+    } else {
+        res.render('login', {
+            pageTitle: "Нэвтрэх хуудас",
+        })
+    }   
 }
 
 exports.postLoginController = (req, res) => {
@@ -25,9 +30,9 @@ exports.postLoginController = (req, res) => {
             } else {
                 bcrypt.compare(password, user.password)
                     .then(matched => {
-                        console.log(matched)
                         if(matched){
-                            res.cookie('loggedIn', 'true')
+                            req.session.isLoggedIn = true;
+                            req.session.user = user;
                             res.redirect(`/user/${user._id}`)
                         } else {
                             res.redirect('/login')
@@ -37,4 +42,12 @@ exports.postLoginController = (req, res) => {
             }
         })
         .catch(err => console.log(err))
+}
+
+
+exports.postLogoutController = (req, res) => {
+    req.session.destroy(err => {
+        console.log(err)
+    })
+    res.redirect('/login');
 }

@@ -1,26 +1,19 @@
 <%- include('include/head.ejs') %>
 
-
-
-
 <% if(post.length === 0){ %>
   <h1>Хэрэглэгч байхгүй байна..</h1>
 <% } else { %>
   <% for(post of post){ %>
       <div class="w-96 border mb-4 border-gray-200 flex justify-between">
-          <h1 class="text-red-400 p-2 text-2xl">
-                  <%= post.title %>
-                  <p class="text-gray-700 p-2">
-                    <%= post.text  %>
-                  </p>
-          </h1>
-          <%  const a = users.find(e => e.id === post.id) %>s
-          <%= a %>
+          <div class="">
+                  <h1 class="text-red-400">Title: <%= post.title %> </h1>
+                  <p  class="text-gray-700">Text: <%= post.text  %></p>
+          </div>
+          <div class="pr-2">
+              <%= users.find(user => user.id === post.id).name %>
+          </div>
       </div>
       <% } %>
 <% } %>
-
-
-
 
 <%- include('include/foot.ejs') %>

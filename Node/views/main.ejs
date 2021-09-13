@@ -1,5 +1,11 @@
 <%- include('include/head.ejs') %>
-    <a class="flex justify-center m-4" href="/register">Register</a>
+
+
+    <div class="flex w-full justify-around">
+        <a href="/login">login</a>
+        <a href="/register">register</a>
+    </div>
+
     <% if(users.length === 0){ %>
         <h1>Хэрэглэгч байхгүй байна..</h1>
     <% } else { %>
